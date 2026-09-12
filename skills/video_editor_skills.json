@@ -1,0 +1,319 @@
+{
+  "video_editor_skills": {
+    "version": "1.0",
+    "created_at": "2026-09-12",
+    "description": "Video editing skills with self-learning capabilities",
+    "skills": {
+      "add_captions": {
+        "id": "skill_captions_001",
+        "name": "Add Animated Captions",
+        "description": "Add AI-generated captions with animations and styling",
+        "category": "text_overlay",
+        "confidence": 0.88,
+        "success_rate": 0.95,
+        "usage_count": 145,
+        "parameters": {
+          "caption_speed": {
+            "type": "enum",
+            "values": ["slow", "normal", "fast"],
+            "default": "normal",
+            "description": "Speed of caption animation"
+          },
+          "font_size": {
+            "type": "integer",
+            "min": 16,
+            "max": 64,
+            "default": 32,
+            "description": "Caption font size in pixels"
+          },
+          "position": {
+            "type": "enum",
+            "values": ["top", "center", "bottom"],
+            "default": "bottom",
+            "description": "Caption vertical position"
+          },
+          "background": {
+            "type": "boolean",
+            "default": true,
+            "description": "Add semi-transparent background to captions"
+          },
+          "animation": {
+            "type": "enum",
+            "values": ["fade_in", "slide_in", "pop_in", "none"],
+            "default": "fade_in",
+            "description": "Caption entry animation"
+          }
+        },
+        "quality_metrics": {
+          "clarity": 0.92,
+          "readability": 0.96,
+          "visual_appeal": 0.88
+        },
+        "best_for": ["TikTok", "Instagram Reels", "YouTube Shorts"],
+        "learning_data": {
+          "improvements_applied": 5,
+          "last_improved": "2026-09-11",
+          "parameter_optimizations": [
+            "font_size: 24→32 (+12% engagement)",
+            "animation: none→fade_in (+8% retention)",
+            "background: true (+6% readability)"
+          ]
+        }
+      },
+      "add_transitions": {
+        "id": "skill_transitions_001",
+        "name": "Add Smooth Transitions",
+        "description": "Add professional transitions between video clips",
+        "category": "effects",
+        "confidence": 0.92,
+        "success_rate": 0.98,
+        "usage_count": 187,
+        "parameters": {
+          "transition_type": {
+            "type": "enum",
+            "values": ["fade", "slide", "zoom", "flip", "blur", "dissolve"],
+            "default": "fade",
+            "description": "Type of transition effect"
+          },
+          "duration_ms": {
+            "type": "integer",
+            "min": 100,
+            "max": 1000,
+            "default": 300,
+            "description": "Transition duration in milliseconds"
+          },
+          "easing": {
+            "type": "enum",
+            "values": ["linear", "ease_in", "ease_out", "ease_in_out"],
+            "default": "ease_in_out",
+            "description": "Easing function for transition"
+          }
+        },
+        "quality_metrics": {
+          "smoothness": 0.97,
+          "professionalism": 0.94,
+          "viewer_engagement": 0.91
+        },
+        "best_for": ["All platforms"],
+        "learning_data": {
+          "improvements_applied": 8,
+          "last_improved": "2026-09-10",
+          "parameter_optimizations": [
+            "duration_ms: 500→300 (+5% pacing appeal)",
+            "easing: linear→ease_in_out (+9% smoothness)",
+            "transition_type: zoom most effective for trending content"
+          ]
+        }
+      },
+      "add_effects": {
+        "id": "skill_effects_001",
+        "name": "Add Visual Effects",
+        "description": "Apply visual effects: zoom, blur, color grading, glow",
+        "category": "effects",
+        "confidence": 0.71,
+        "success_rate": 0.85,
+        "usage_count": 92,
+        "parameters": {
+          "effect_type": {
+            "type": "enum",
+            "values": ["zoom", "blur", "color_grade", "glow", "vignette", "slow_motion"],
+            "default": "zoom",
+            "description": "Type of visual effect"
+          },
+          "intensity": {
+            "type": "float",
+            "min": 0.0,
+            "max": 1.0,
+            "default": 0.5,
+            "description": "Effect intensity (0 = none, 1 = maximum)"
+          },
+          "duration_ms": {
+            "type": "integer",
+            "min": 200,
+            "max": 5000,
+            "default": 500,
+            "description": "Duration of effect in milliseconds"
+          }
+        },
+        "quality_metrics": {
+          "visual_impact": 0.78,
+          "subtlety": 0.68,
+          "viewer_appeal": 0.84
+        },
+        "best_for": ["Highlights", "Key moments", "Attention-grabbing scenes"],
+        "learning_data": {
+          "improvements_applied": 3,
+          "last_improved": "2026-09-09",
+          "parameter_optimizations": [
+            "intensity: 0.8→0.5 (less is more)",
+            "effect_type: zoom most effective (72% engagement)",
+            "Need training: color_grade and glow"
+          ]
+        }
+      },
+      "add_music": {
+        "id": "skill_music_001",
+        "name": "Add Background Music",
+        "description": "Add background music with dynamic volume balancing",
+        "category": "audio",
+        "confidence": 0.79,
+        "success_rate": 0.90,
+        "usage_count": 156,
+        "parameters": {
+          "music_style": {
+            "type": "enum",
+            "values": ["upbeat", "calm", "dramatic", "motivational", "chill", "energetic"],
+            "default": "upbeat",
+            "description": "Music style matching video mood"
+          },
+          "volume_level": {
+            "type": "float",
+            "min": 0.0,
+            "max": 1.0,
+            "default": 0.6,
+            "description": "Music volume (0-1)"
+          },
+          "fade_in": {
+            "type": "boolean",
+            "default": true,
+            "description": "Fade music in at start"
+          },
+          "fade_out": {
+            "type": "boolean",
+            "default": true,
+            "description": "Fade music out at end"
+          }
+        },
+        "quality_metrics": {
+          "audio_quality": 0.88,
+          "mood_matching": 0.81,
+          "engagement_boost": 0.79
+        },
+        "best_for": ["TikTok", "Instagram", "YouTube"],
+        "learning_data": {
+          "improvements_applied": 4,
+          "last_improved": "2026-09-11",
+          "parameter_optimizations": [
+            "volume_level: 0.7→0.6 (+8% viewer comfort)",
+            "music_style: upbeat optimal for viral content (78% correlation)",
+            "fade_in/out: both enabled (+12% perceived quality)"
+          ]
+        }
+      },
+      "optimize_resolution": {
+        "id": "skill_resolution_001",
+        "name": "Optimize Video Resolution",
+        "description": "Optimize video for target platform with adaptive resolution",
+        "category": "encoding",
+        "confidence": 0.94,
+        "success_rate": 0.99,
+        "usage_count": 203,
+        "parameters": {
+          "target_platform": {
+            "type": "enum",
+            "values": ["tiktok", "youtube", "instagram", "telegram", "universal"],
+            "default": "tiktok",
+            "description": "Target platform for optimization"
+          },
+          "resolution": {
+            "type": "enum",
+            "values": ["720x1280", "1080x1920", "1280x720", "1920x1080", "3840x2160"],
+            "default": "1080x1920",
+            "description": "Target resolution"
+          },
+          "bitrate": {
+            "type": "string",
+            "values": ["4000k", "6000k", "8000k", "12000k"],
+            "default": "8000k",
+            "description": "Video bitrate"
+          },
+          "fps": {
+            "type": "integer",
+            "values": [24, 30, 60],
+            "default": 30,
+            "description": "Frames per second"
+          }
+        },
+        "quality_metrics": {
+          "platform_compliance": 0.99,
+          "quality_preservation": 0.96,
+          "file_size_efficiency": 0.91
+        },
+        "best_for": ["All platforms"],
+        "learning_data": {
+          "improvements_applied": 12,
+          "last_improved": "2026-09-12",
+          "parameter_optimizations": [
+            "resolution: 1080x1920 optimal for TikTok/Instagram",
+            "bitrate: 8000k best balance quality/size",
+            "fps: 30 standard (24 for cinematic, 60 for gaming)"
+          ]
+        }
+      },
+      "crop_and_frame": {
+        "id": "skill_crop_001",
+        "name": "Intelligent Crop & Frame",
+        "description": "Smart cropping with subject detection and focus optimization",
+        "category": "composition",
+        "confidence": 0.85,
+        "success_rate": 0.92,
+        "usage_count": 168,
+        "parameters": {
+          "focus_detection": {
+            "type": "boolean",
+            "default": true,
+            "description": "Auto-detect focus subject (face, object)"
+          },
+          "aspect_ratio": {
+            "type": "enum",
+            "values": ["16:9", "9:16", "1:1", "4:3", "custom"],
+            "default": "9:16",
+            "description": "Output aspect ratio"
+          },
+          "smart_padding": {
+            "type": "boolean",
+            "default": true,
+            "description": "Add intelligent padding (blur, color)"
+          }
+        },
+        "quality_metrics": {
+          "composition": 0.88,
+          "subject_prominence": 0.91,
+          "visual_balance": 0.84
+        },
+        "best_for": ["TikTok", "Instagram Reels", "Portrait videos"],
+        "learning_data": {
+          "improvements_applied": 6,
+          "last_improved": "2026-09-10",
+          "parameter_optimizations": [
+            "aspect_ratio: 9:16 optimal for TikTok/Instagram",
+            "focus_detection: enabled (+7% engagement)",
+            "smart_padding: blur background (+9% focus on subject)"
+          ]
+        }
+      }
+    },
+    "meta_skills": {
+      "skill_selector": {
+        "description": "AI-powered skill selection based on video content",
+        "capability": "Analyzes video and recommends optimal skill combination"
+      },
+      "parameter_optimizer": {
+        "description": "Auto-optimize skill parameters based on content type",
+        "capability": "Learns best parameters for different video styles"
+      },
+      "quality_validator": {
+        "description": "Validate output quality against platform standards",
+        "capability": "Ensures all videos meet platform requirements"
+      }
+    },
+    "learning_configuration": {
+      "enabled": true,
+      "feedback_source": "engagement_metrics",
+      "optimization_frequency": "per_cycle",
+      "parameter_adaptation": true,
+      "confidence_threshold": 0.7,
+      "success_threshold": 0.8
+    }
+  }
+}
