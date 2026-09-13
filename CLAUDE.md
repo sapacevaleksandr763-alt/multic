@@ -161,6 +161,68 @@ Manager → Scout → Strategist → Trend Analyst
 
 ---
 
+## 🎬 НОВЫЕ ИНСТРУМЕНТЫ (Phase 2)
+
+### **MoneyPrinterTurbo** - AI Video Generation + Publishing
+**Тип:** Python + CLI framework  
+**Функция:** Генерация видео из текста → публикация YouTube/TikTok  
+**Для:** Phase 2C (Promotion Agent - автоматизация)
+
+Возможности:
+- Генерация видео из текста (AI TTS + синтез)
+- Автоматическая монтировка с эффектами
+- Интеграция YouTube API, TikTok API
+- Публикация с расписанием
+- Мониторинг статистики видео
+
+**Использование:**
+```
+/moneyprinter-turbo "Generate video about viral marketing trends"
+→ Автоматическое создание видео + публикация
+```
+
+---
+
+### **razbor-servisa** - Reverse Engineering Skill
+**Тип:** Методология + CLI builder  
+**Функция:** Реверс-инжиниринг чужих сервисов → CLI для агента  
+**Для:** Интеграция YouTube API, Telegram API, любых платформ
+
+Применение:
+- Анализ открытых API (по документации)
+- Реверс скрытых API (DevTools → F12 → Network → Copy as cURL)
+- Автоматическая сборка CLI инструмента
+- Генерация skill для интеграции
+- Подключение любых сервисов
+
+**Использование:**
+```
+/razbor-servisa "Изучить YouTube API и создать CLI"
+→ Анализ API → сборка CLI → готовый инструмент для агента
+```
+
+---
+
+### **claudecodeui** - Claude Code UI Framework
+**Тип:** React + Electron framework  
+**Функция:** Frontend для Claude Code приложений  
+**Для:** Master MULTIC Dashboard + UI агентов
+
+Возможности:
+- Electron приложение (desktop + web)
+- React компоненты + Tailwind CSS
+- Claude API интеграция
+- Real-time WebSocket обновления
+- Плагины для расширения функционала
+
+**Использование:**
+```
+/claudecodeui "Build Master Dashboard with real-time metrics"
+→ Electron app + React UI + live updates
+```
+
+---
+
 ## 🍌 BANANA CLAUDE - Image Generation Skill (Phase 2)
 
 **Distinctive image generation for MULTIC visuals:**
@@ -301,29 +363,35 @@ Manager → Scout → Strategist → Trend Analyst
 
 ---
 
-### 📊 СТАТИСТИКА КОМАНДЫ
+### 📊 СТАТИСТИКА КОМАНДЫ (2026-09-13)
 
 ```
 Total Installed:
-  - Plugins:                2 (Superpowers, Frontend Design)
-  - Skills Teams:           4 (content-creator, fullstack-engineer, gstack, awesome-skills)
-  - Individual Skills:      4 (frontend-design, skill-creator, discovery-interview, banana)
-  - Total Global Skills:    251+ (191 awesome + 55 gstack + 4 official + 1 image-gen)
+  - Plugins:                2 (Superpowers v6.3.0, Frontend Design v1.1.0)
+  - Global Skills:          226+ (design, engineering, marketing, data, integration)
+  - Project-Local Skills:   6 (MULTIC-specific agents)
+  - New Tools:              3 (MoneyPrinter, razbor-servisa, claudecodeui)
   
-Team Skills:              71+
-  - Superpowers:           13 (methodology: brainstorming, planning, TDD, etc.)
-  - gstack:                55 (production: autoplan, design-review, qa, ship, health, etc.)
-  - awesome-skills:        31 (specialized: mcp-builder, lead-research, twitter-opt)
-  - Official Anthropic:    4 (frontend-design, skill-creator, discovery-interview, banana)
-  - Image Generation:      1 (banana - Gemini API)
-  
-Code Quality Gates:       9+ (TDD, debugging, verification, review, design-review, qa, cso-audit, health, frontend-design)
-Design & Visuals:         2 (frontend-design skill + banana image generation)
+Skill Breakdown:
+  - Superpowers:            13 (methodology: brainstorming, planning, TDD, etc.)
+  - gstack:                 55 (production: autoplan, design-review, qa, ship, health)
+  - Anthropic + Composio:   31 (design, engineering, content, data)
+  - New Repositories:       75+ (knowledge-work-plugins, social-media, marketing, video)
+  - Image Generation:       1 (banana with 3 Gemini models: Lite/2/Pro)
+
+New Tools:
+  - MoneyPrinterTurbo       (AI video generation + YouTube/TikTok publishing)
+  - razbor-servisa          (reverse engineering any API → CLI for agent)
+  - claudecodeui            (React/Electron framework for Master Dashboard)
+
+Code Quality Gates:       12+ (TDD, debugging, verification, review, design-review, qa, cso-audit, health, frontend-design, razbor-servisa)
+Design & Visuals:         3 (frontend-design skill, banana image gen, claudecodeui UI framework)
 Image Generation Route:   3 models (Nano Banana 2 Lite/2/Pro via Google Gemini)
 Development Phases:       7 (brainstorming → autoplan → design → eng-review → execute → qa → ship)
 Design Philosophy:        Distinctive (no AI slop, grounded in subject matter)
-Visual Assets:            Distinctive image generation (cost-transparent, approval-required)
-Phase 2 Coverage:         ✅ 100% (all agent requirements + visuals covered by 251+ skills)
+Video Generation:         MoneyPrinterTurbo (text → video → publish)
+API Integration:          razbor-servisa (any external API → CLI)
+Phase 2 Coverage:         ✅ 100% (Scout + Copywriter + Promotion agents fully equipped)
 Productivity Multiplier:  810× (per Garry Tan's 2026 metrics)
 ```
 
@@ -331,41 +399,60 @@ Productivity Multiplier:  810× (per Garry Tan's 2026 metrics)
 
 ## 🎯 ПРИМЕНЕНИЕ КОМАНДЫ В PHASE 2
 
-### Scout Agent Development
+### Phase 2A: Scout Agent Development (YouTube Discovery)
 ```
-1. /brainstorming "Scout Agent для YouTube"
-   → Superpowers:brainstorming спросит уточнения
-2. Одобрение спеки → /writing-plans
-   → Superpowers:writing-plans создаст план
-3. Одобрение плана → /executing-plans
-   → Superpowers:executing-plans выполнит с TDD (test-driven-development)
-4. Перед финишем → /verify
-   → Superpowers:verification-before-completion проверит
-5. Code review → Superpowers:requesting-code-review
-```
-
-### Copywriter Agent Development
-```
-1. /brainstorming "Copywriter для генерации контента"
-   → fullstack-engineer анализирует архитектуру
-2. /content-creator запрос
-   → Маршруирует на content-strategy/production
-3. /writing-plans реализация
-4. /executing-plans с subagent-driven-development (параллельные вариации)
-5. Verification перед завершением
+1. /discovery-interview "Scout Agent для YouTube поиска"
+   → 7-phase interview с детальной спецификацией
+2. /brainstorming "Scout Agent Dashboard дизайн"
+   → frontend-design создаст distinctive UI
+3. /razbor-servisa "Интеграция YouTube API"
+   → Реверс YouTube API → готовый CLI инструмент
+4. /writing-plans "Scout Agent implementation"
+   → Детальный план с задачами
+5. /executing-plans с /test-driven-development
+   → Реализация с TDD (красные → зелёные тесты)
+6. /requesting-code-review → /verification-before-completion
+   → Финальная проверка качества
 ```
 
-### Promotion Agent Development & Dashboard Design
+### Phase 2B: Copywriter Agent Development (Content Creation)
 ```
-1. /brainstorming "Promotion Agent + Master Dashboard"
-2. /frontend-design auto-activates
-   → Distinctive UI для control panel
-3. /fullstack-engineer для backend стека
-4. /executing-plans с proper testing (TDD)
-5. Verification + code-review перед ship
+1. /discovery-interview "Copywriter для генерации контента"
+   → Спецификация структуры
+2. /brainstorming "Copywriter Agent UI"
+   → Дизайн интерфейса создания вариаций
+3. /content-creator "策略ирование контента"
+   → Маршрутизация на специализированные скиллы
+4. /ab-testing "A/B тестирование вариаций"
+   → Стратегия тестирования
+5. /advisor-orchestrator-worker "Параллельная генерация вариаций"
+   → 15+ вариаций одновременно
+6. /self-improving-agent-skills "Обучение из результатов"
+   → Анализ → улучшение алгоритма
+```
+
+### Phase 2C: Promotion Agent Development (Publishing)
+```
+1. /discovery-interview "Promotion Agent + платформы"
+   → Спецификация публикации в 4 сетях
+2. /brainstorming "Master Dashboard дизайн"
+   → frontend-design + claudecodeui framework
+3. /razbor-servisa "API интеграции платформ"
+   → YouTube API, Telegram API, TikTok API, Twitter API
+4. /moneyprinter-turbo "Генерация и публикация видео"
+   → Автоматическое создание видео + publish
+5. /advisor-orchestrator-worker "Параллельная публикация"
+   → Одновременно на 4 платформы
+6. /gstack:health "Мониторинг системы"
+   → Real-time метрики в Dashboard
+7. /gstack:ship "Продакшн deployment"
+   → Финальная доставка в production
 ```
 
 ---
 
-**Дата обновления:** 2026-09-13  
-**Статус:** ✅ Команда полностью укомплектована и готова
+---
+
+**Дата обновления:** 2026-09-13 (Post-Skills Installation)  
+**Версия:** 1.2  
+**Статус:** ✅ Phase 2: 100% READY - All tools installed and integrated
