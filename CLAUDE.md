@@ -132,6 +132,30 @@ Manager → Scout → Strategist → Trend Analyst
 
 ---
 
+## 🎯 AWESOME CLAUDE SKILLS INTEGRATION (Phase 2)
+
+### 3️⃣ **New Critical Skills** (from Composio)
+
+#### 🔧 **mcp-builder**
+- **Role:** MCP Server Protocol Integration
+- **For Scout Agent:** Structured YouTube API calls with error handling
+- **For Promotion Agent:** Telegram API integration & rate limiting
+
+#### 📊 **lead-research-assistant**
+- **Role:** Market Trend Analysis
+- **For Scout Agent:** Identifies viral video trends & emerging patterns
+- **For Copywriter:** Competitor content strategy research
+
+#### 📱 **twitter-algorithm-optimizer**
+- **Role:** Content Optimization for Social Platforms
+- **For Copywriter:** Generate algorithm-optimized variations
+- **For Promotion Agent:** Auto-optimize posts before publishing
+
+#### 📋 **internal-comms** & **file-organizer**
+- **For System:** Daily reports, file management, organization
+
+---
+
 ## 👥 МОЯ КОМАНДА - Установленные Скиллы и Плагины
 
 ### 🦸 **Superpowers Plugin** v6.3.0
@@ -211,11 +235,13 @@ Manager → Scout → Strategist → Trend Analyst
 ### 📊 СТАТИСТИКА КОМАНДЫ
 
 ```
-Total Skills Installed:  2 плагина + 2 скилла = 4 основных инструмента
-Total Built-in Skills:  13 (от Superpowers) + 2 (content/fullstack) = 15
-Auto-activation Points:  6+ триггеров для автоматического подключения
-Code Quality Gates:     5 (TDD, debugging, verification, review, completion)
-Development Phases:     5 (brainstorming → planning → execution → review → finish)
+Total Skills Installed:   2 плагина + 7 скиллов = 9 основных инструментов
+Total Built-in Skills:    13 (Superpowers) + 7 (content/fullstack/awesome) = 20
+Global Skills Available:  191 (Superpowers + Anthropic + Composio awesome-claude-skills)
+Auto-activation Points:   10+ триггеров для автоматического подключения
+Code Quality Gates:       5 (TDD, debugging, verification, review, completion)
+Development Phases:       5 (brainstorming → planning → execution → review → finish)
+Phase 2 Coverage:         100% (все агенты обеспечены скиллами)
 ```
 
 ---
