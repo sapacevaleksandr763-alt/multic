@@ -211,22 +211,33 @@ Manager → Scout → Strategist → Trend Analyst
 
 ---
 
-### 🎨 **Frontend Design Plugin** v1.1.0
+### 🎨 **Frontend Design Skill** v1.1.0
 **Роль:** UI/UX Design Lead (Distinctive Visual Identity)  
 **Авторы:** Prithvi Rajasekaran, Alexander Bricken (Anthropic)  
+**Установка:** ✅ Fresh from github.com/anthropics/claude-code (2026-09-13)  
 **Когда подключается:** Автоматически при любых UI/frontend запросах
 
+**Философия:**
+> "Distinctive point of view: deliberate, opinionated choices specific to brief, take aesthetic risk if justified"
+
 **Специализация:**
-- Создание distinctive, production-grade интерфейсов
-- Избегание generic AI-эстетики
-- Опinionated дизайн решения (палитра, типография)
-- Grounding в subject matter (индустрия, контекст)
+- ✅ Distinctive, production-grade интерфейсы (no AI slop)
+- ✅ Grounded в subject matter (индустрия, контекст, vernacular)
+- ✅ 2-pass design process (план → review → build)
+- ✅ Self-critique против defaults
+- ✅ Полная accessibility & responsive
+
+**Что НЕ делает:**
+- ❌ Warm cream backgrounds + clay accents
+- ❌ Generic SaaS card kits
+- ❌ Template defaults для любого проекта
+- ❌ Scattered, unmotivated motion effects
 
 **Использование в MULTIC:**
-- Scout Agent Dashboard — distinctive видео-скаутинг интерфейс
-- Copywriter Agent UI — creative tool studio эстетика
-- Promotion Agent Panel — professional control center
-- Main MULTIC Dashboard — future-forward система UI
+- Scout Agent Dashboard — ground in video/streaming industry
+- Copywriter Agent UI — ground in creative studio aesthetic
+- Promotion Agent Panel — ground in broadcast/publication
+- Master MULTIC Dashboard — ground in autonomous systems
 
 ---
 
@@ -267,16 +278,20 @@ Manager → Scout → Strategist → Trend Analyst
 Total Installed:
   - Plugins:                2 (Superpowers, Frontend Design)
   - Skills Teams:           4 (content-creator, fullstack-engineer, gstack, awesome-skills)
-  - Total Global Skills:    246+ (191 awesome-skills + 55 gstack)
+  - Individual Skills:      3 (frontend-design, skill-creator, discovery-interview)
+  - Total Global Skills:    250+ (191 awesome-skills + 55 gstack + 3 official)
   
-Team Skills:              67+
-  - Superpowers:           13 (methodology)
-  - gstack:                55 (production workflows)
-  - awesome-skills:        31 (specialized)
+Team Skills:              70+
+  - Superpowers:           13 (methodology: brainstorming, planning, TDD, etc.)
+  - gstack:                55 (production: autoplan, design-review, qa, ship, health, etc.)
+  - awesome-skills:        31 (specialized: mcp-builder, lead-research, twitter-opt)
+  - Official Anthropic:    3 (frontend-design, skill-creator, discovery-interview)
   
-Code Quality Gates:       8+ (TDD, debugging, verification, review, design-review, qa, cso-audit, health)
+Code Quality Gates:       9+ (TDD, debugging, verification, review, design-review, qa, cso-audit, health, frontend-design)
+Design-Specific Gates:    2 (frontend-design skill + design-review from gstack)
 Development Phases:       7 (brainstorming → autoplan → design → eng-review → execute → qa → ship)
-Phase 2 Coverage:         ✅ 100% (all agent requirements covered by 246+ skills)
+Design Philosophy:        Distinctive (no AI slop, grounded in subject matter)
+Phase 2 Coverage:         ✅ 100% (all agent requirements covered by 250+ skills)
 Productivity Multiplier:  810× (per Garry Tan's 2026 metrics)
 ```
 
