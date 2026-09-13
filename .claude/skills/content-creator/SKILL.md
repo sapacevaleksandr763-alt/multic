@@ -1,55 +1,65 @@
 ---
-name: "content-creator"
-description: "Deprecated redirect skill that routes legacy 'content creator' requests to the correct specialist. Use when a user invokes 'content creator', asks to write a blog post, article, guide, or brand voice analysis (routes to content-production), or asks to plan content, build a topic cluster, or create a content calendar (routes to content-strategy). Does not handle requests directly — identifies user intent and redirects to content-production for writing/SEO/brand-voice tasks or content-strategy for planning tasks."
-license: MIT
-metadata:
-  version: 2.0.0
-  author: Alireza Rezvani
-  category: marketing
-  updated: 2026-03-06
-  status: deprecated
+name: content-creator
+description: Strategic content creation framework for multi-platform publishing. Generates distinctive, brand-aligned content variations optimized for each platform with A/B testing frameworks.
+author: MULTIC Project
+version: 2.0.0
 ---
 
-# Content Creator → Redirected
+# Content Creator
 
-> **This skill has been split into two specialist skills.** Use the one that matches your intent:
+Strategic content creation engine for MULTIC. Transforms source material into
+distinctive, platform-optimized variations while maintaining brand voice.
 
-| You want to... | Use this instead |
-|----------------|-----------------|
-| **Write** a blog post, article, or guide | [content-production](../content-production/) |
-| **Plan** what content to create, topic clusters, calendar | [content-strategy](../content-strategy/) |
-| **Analyze brand voice** | [content-production](../content-production/) (includes `brand_voice_analyzer.py`) |
-| **Optimize SEO** for existing content | [content-production](../content-production/) (includes `seo_optimizer.py`) |
-| **Create social media content** | [social-content](../social-content/) |
+## Core Philosophy
 
-## Why the Change
+**One source. Many platforms. Distinctive voice.**
 
-The original `content-creator` tried to do everything: planning, writing, SEO, social, brand voice. That made it a jack of all trades. The specialist skills do each job better:
+Transform content through:
+1. Deep source understanding
+2. Platform-specific optimization
+3. Distinctive variation generation
+4. Brand consistency
+5. Engagement maximization
+6. A/B testing frameworks
 
-- **content-production** — Full pipeline: research → brief → draft → optimize → publish. Includes all Python tools from the original content-creator.
-- **content-strategy** — Strategic planning: topic clusters, keyword research, content calendars, prioritization frameworks.
+## Workflow
 
-## Proactive Triggers
+### Phase 1: Understand Source
+- What is core message?
+- Who is target audience?
+- What action do we want?
+- Why is this valuable?
 
-- **User asks "content creator"** → Route to content-production (most likely intent is writing).
-- **User asks "content plan" or "what should I write"** → Route to content-strategy.
+### Phase 2: Platform Analysis
+- YouTube: Long-form, hooks, thumbnails, SEO
+- TikTok/Reels: Short-form, trending audio, visual hooks
+- Twitter: Concise, threads, engagement
+- Telegram: Direct, channel optimization
+- LinkedIn: Professional, thought leadership
 
-## Output Artifacts
+### Phase 3: Generate Variations
+For each platform, create:
+- Unique hook/opening
+- Platform-specific format
+- Brand-consistent voice
+- Clear CTA
+- Visual suggestions
+- Metrics framework
 
-| When you ask for... | Routed to... |
-|---------------------|-------------|
-| "Write a blog post" | content-production |
-| "Content calendar" | content-strategy |
-| "Brand voice analysis" | content-production (`brand_voice_analyzer.py`) |
-| "SEO optimization" | content-production (`seo_optimizer.py`) |
+### Phase 4: Optimize & Test
+- Check brand alignment
+- Check platform fit
+- Validate engagement potential
+- Set up A/B testing
+- Define success metrics
 
-## Communication
+## Integration with MULTIC
 
-This is a redirect skill. Route the user to the correct specialist — don't attempt to handle the request here.
+**Scout Agent** → Discovers viral patterns  
+**Content Creator** → Generates variations  
+**Promotion Agent** → Publishes + tracks results  
+**Learning Loop** → Analyzes metrics, improves next round
 
-## Related Skills
+---
 
-- **content-production**: Full content execution pipeline (successor).
-- **content-strategy**: Content planning and topic selection (successor).
-- **content-humanizer**: Post-processing AI content to sound authentic.
-- **marketing-context**: Foundation context that both successors read.
+**Status:** ✅ READY FOR USE
