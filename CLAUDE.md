@@ -161,6 +161,35 @@ Manager → Scout → Strategist → Trend Analyst
 
 ---
 
+## 🍌 BANANA CLAUDE - Image Generation Skill (Phase 2)
+
+**Distinctive image generation for MULTIC visuals:**
+
+- **generate** — Create campaign visuals, covers, product scenes, diagrams
+- **edit** — Modify images while preserving identity & brand details
+- **continue** — Iterate on previous results with refinements
+- **portfolio** — A/B/C test up to 3 approaches across 3 model routes
+- **review** — Inspect pixels, verify composition, clear rights
+- **typeset** — Add approved copy, fonts, logos locally
+
+**5-Step Workflow:**
+```
+1. Ask → 2. Plan (offline) → 3. Review → 4. Approve → 5. Create & Check
+```
+
+**For MULTIC:**
+- Scout Agent: YouTube thumbnail concepts
+- Copywriter Agent: Social media graphics  
+- Promotion Agent: Platform-specific cover images
+- Dashboard: Agent illustrations & system diagrams
+
+**Model Routes:** Nano Banana 2 Lite (fast/cheap), 2 (balanced), Pro (best)  
+**Cost:** Transparent estimates before execution  
+**Approval:** Single-use tokens (30 min expiry)  
+**Provider:** Google Gemini API (requires billing-enabled project)
+
+---
+
 ## 🎯 AWESOME CLAUDE SKILLS INTEGRATION (Phase 2)
 
 ### 3️⃣ **New Critical Skills** (from Composio)
@@ -278,20 +307,23 @@ Manager → Scout → Strategist → Trend Analyst
 Total Installed:
   - Plugins:                2 (Superpowers, Frontend Design)
   - Skills Teams:           4 (content-creator, fullstack-engineer, gstack, awesome-skills)
-  - Individual Skills:      3 (frontend-design, skill-creator, discovery-interview)
-  - Total Global Skills:    250+ (191 awesome-skills + 55 gstack + 3 official)
+  - Individual Skills:      4 (frontend-design, skill-creator, discovery-interview, banana)
+  - Total Global Skills:    251+ (191 awesome + 55 gstack + 4 official + 1 image-gen)
   
-Team Skills:              70+
+Team Skills:              71+
   - Superpowers:           13 (methodology: brainstorming, planning, TDD, etc.)
   - gstack:                55 (production: autoplan, design-review, qa, ship, health, etc.)
   - awesome-skills:        31 (specialized: mcp-builder, lead-research, twitter-opt)
-  - Official Anthropic:    3 (frontend-design, skill-creator, discovery-interview)
+  - Official Anthropic:    4 (frontend-design, skill-creator, discovery-interview, banana)
+  - Image Generation:      1 (banana - Gemini API)
   
 Code Quality Gates:       9+ (TDD, debugging, verification, review, design-review, qa, cso-audit, health, frontend-design)
-Design-Specific Gates:    2 (frontend-design skill + design-review from gstack)
+Design & Visuals:         2 (frontend-design skill + banana image generation)
+Image Generation Route:   3 models (Nano Banana 2 Lite/2/Pro via Google Gemini)
 Development Phases:       7 (brainstorming → autoplan → design → eng-review → execute → qa → ship)
 Design Philosophy:        Distinctive (no AI slop, grounded in subject matter)
-Phase 2 Coverage:         ✅ 100% (all agent requirements covered by 250+ skills)
+Visual Assets:            Distinctive image generation (cost-transparent, approval-required)
+Phase 2 Coverage:         ✅ 100% (all agent requirements + visuals covered by 251+ skills)
 Productivity Multiplier:  810× (per Garry Tan's 2026 metrics)
 ```
 
