@@ -432,6 +432,12 @@
       "sourceType": "github",
       "skillPath": "skills/video/SKILL.md",
       "computedHash": "d0868ef8e927fec183f13aea40e50ccc16d61fd9ecce6da4488715b43b821245"
+    },
+    "viral-video-hooks-retention": {
+      "source": "josiahsiegel/claude-plugin-marketplace",
+      "sourceType": "github",
+      "skillPath": "plugins/viral-video-master/skills/viral-video-hooks-retention/SKILL.md",
+      "computedHash": "c0c4a2e5e0bb42a3c16deeb0ff4312ac643664a9a86ef766285411c1a37c8abe"
     }
   }
 }
