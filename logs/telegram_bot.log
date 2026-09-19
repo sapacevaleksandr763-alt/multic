@@ -1,0 +1,191 @@
+2026-09-19 20:09:45,232 - INFO - TelegramBot class initialized
+2026-09-19 20:09:46,294 - ERROR - FATAL ERROR: 'Updater' object has no attribute '_Updater__polling_cleanup_cb' and no __dict__ for setting new attributes
+Traceback (most recent call last):
+  File "C:\Users\Alex\Documents\Projects\multic\telegram_bot.py", line 131, in main
+    await bot.run()
+  File "C:\Users\Alex\Documents\Projects\multic\telegram_bot.py", line 104, in run
+    self.app = Application.builder().token(self.token).build()
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_applicationbuilder.py", line 312, in build
+    updater = Updater(bot=bot, update_queue=update_queue)
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_updater.py", line 128, in __init__
+    self.__polling_cleanup_cb: Optional[Callable[[], Coroutine[Any, Any, None]]] = None
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Updater' object has no attribute '_Updater__polling_cleanup_cb' and no __dict__ for setting new attributes
+2026-09-19 20:35:46,272 - INFO - TelegramBot class initialized
+2026-09-19 20:35:47,314 - INFO - Bot application created
+2026-09-19 20:35:47,514 - ERROR - FATAL ERROR: Cannot close a running event loop
+Traceback (most recent call last):
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 1054, in __run
+    loop.run_until_complete(self._bootstrap_initialize(max_retries=bootstrap_retries))
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 701, in run_until_complete
+    self._check_running()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 637, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 1079, in __run
+    loop.run_until_complete(self.shutdown())
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 701, in run_until_complete
+    self._check_running()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 637, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Alex\Documents\Projects\multic\telegram_bot.py", line 131, in main
+    await bot.run()
+  File "C:\Users\Alex\Documents\Projects\multic\telegram_bot.py", line 117, in run
+    await self.app.run_polling()
+          ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 839, in run_polling
+    return self.__run(
+           ~~~~~~~~~~^
+        updater_coroutine=self.updater.start_polling(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        close_loop=close_loop,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 1084, in __run
+    loop.close()
+    ~~~~~~~~~~^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 686, in close
+    raise RuntimeError("Cannot close a running event loop")
+RuntimeError: Cannot close a running event loop
+2026-09-19 20:56:35,900 - INFO - Creating bot application...
+2026-09-19 20:56:36,949 - INFO - Registering command handlers...
+2026-09-19 20:56:36,950 - INFO - Bot setup complete, starting polling...
+2026-09-19 20:56:36,950 - INFO - Bot polling started
+2026-09-19 20:56:37,085 - ERROR - FATAL ERROR: Cannot close a running event loop
+Traceback (most recent call last):
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 1054, in __run
+    loop.run_until_complete(self._bootstrap_initialize(max_retries=bootstrap_retries))
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 701, in run_until_complete
+    self._check_running()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 637, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 1079, in __run
+    loop.run_until_complete(self.shutdown())
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 701, in run_until_complete
+    self._check_running()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 637, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Alex\Documents\Projects\multic\telegram_bot.py", line 119, in main
+    await app.run_polling()
+          ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 839, in run_polling
+    return self.__run(
+           ~~~~~~~~~~^
+        updater_coroutine=self.updater.start_polling(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        close_loop=close_loop,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 1084, in __run
+    loop.close()
+    ~~~~~~~~~~^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 686, in close
+    raise RuntimeError("Cannot close a running event loop")
+RuntimeError: Cannot close a running event loop
+2026-09-19 20:56:51,013 - INFO - Creating bot application...
+2026-09-19 20:56:52,033 - INFO - Registering command handlers...
+2026-09-19 20:56:52,033 - INFO - Bot setup complete, starting polling...
+2026-09-19 20:56:52,034 - INFO - Bot polling started
+2026-09-19 20:56:52,075 - ERROR - FATAL ERROR: Cannot close a running event loop
+Traceback (most recent call last):
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 1054, in __run
+    loop.run_until_complete(self._bootstrap_initialize(max_retries=bootstrap_retries))
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 701, in run_until_complete
+    self._check_running()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 637, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 1079, in __run
+    loop.run_until_complete(self.shutdown())
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 701, in run_until_complete
+    self._check_running()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 637, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Alex\Documents\Projects\multic\telegram_bot.py", line 119, in main
+    await app.run_polling()
+          ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 839, in run_polling
+    return self.__run(
+           ~~~~~~~~~~^
+        updater_coroutine=self.updater.start_polling(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        close_loop=close_loop,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\site-packages\telegram\ext\_application.py", line 1084, in __run
+    loop.close()
+    ~~~~~~~~~~^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 686, in close
+    raise RuntimeError("Cannot close a running event loop")
+RuntimeError: Cannot close a running event loop
+2026-09-19 21:21:51,574 - INFO - Creating bot application...
+2026-09-19 21:21:52,624 - INFO - Registering command handlers...
+2026-09-19 21:21:52,624 - INFO - Bot setup complete, starting polling...
+2026-09-19 21:21:52,624 - INFO - Bot polling started
+2026-09-19 21:21:57,878 - INFO - [/start] User 5270952978 (Александр) sent /start
+2026-09-19 21:21:58,287 - INFO - [/start] Replied to user 5270952978
+2026-09-19 21:38:42,150 - INFO - Creating bot application...
+2026-09-19 21:38:43,185 - INFO - Registering command handlers...
+2026-09-19 21:38:43,186 - INFO - Bot setup complete, starting polling...
+2026-09-19 21:38:43,186 - INFO - Bot polling started
+2026-09-19 21:39:39,012 - INFO - [/start] User 5270952978 (Александр) sent /start
+2026-09-19 21:39:41,918 - INFO - [/start] Replied to user 5270952978
+2026-09-19 21:52:07,978 - INFO - Bot stopped by user (Ctrl+C)
+2026-09-19 22:26:24,192 - INFO - Creating bot application...
+2026-09-19 22:26:25,280 - INFO - Registering command handlers...
+2026-09-19 22:26:25,280 - INFO - Bot setup complete, starting polling...
+2026-09-19 22:26:25,280 - INFO - Bot polling started
+2026-09-19 22:28:28,287 - INFO - Creating bot application...
+2026-09-19 22:28:29,341 - INFO - Registering command handlers...
+2026-09-19 22:28:29,341 - INFO - Bot setup complete, starting polling...
+2026-09-19 22:28:29,342 - INFO - Bot polling started
+2026-09-19 22:29:39,064 - INFO - [/start] User 5270952978 (Александр) sent /start
+2026-09-19 22:29:42,012 - INFO - [/start] Replied to user 5270952978
+2026-09-19 22:32:28,503 - INFO - Bot stopped by user (Ctrl+C)
