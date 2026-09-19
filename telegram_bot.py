@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """
-🤖 MULTIC Telegram Bot - Main Command Handler
+🤖 MULTIC Telegram Bot - Main Command Handler (API v22.8)
 
 Starts the Telegram bot and handles commands:
 - /start: Bot initialization and greeting
 - Other commands handled by Scout/Copywriter/Promotion agents
+
+Compatible with python-telegram-bot>=22.0
 """
 
 import logging
@@ -13,12 +15,12 @@ import sys
 
 # Setup console logging FIRST (before any errors)
 console_handler = logging.StreamHandler(sys.stdout)
-console_handler.setLevel(logging.DEBUG)
+console_handler.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 console_handler.setFormatter(formatter)
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 logger.addHandler(console_handler)
 
 print("=" * 80)
@@ -33,7 +35,7 @@ try:
     print("✅ dotenv loaded")
 except ImportError as e:
     print(f"❌ ERROR: python-dotenv not installed: {e}")
-    print("   Fix: pip install python-dotenv==1.0.1")
+    print("   Fix: pip install python-dotenv")
     sys.exit(1)
 
 # Load token from .env
@@ -47,14 +49,14 @@ else:
     print(f"✅ Token loaded (first 20 chars): {TELEGRAM_BOT_TOKEN[:20]}...")
 
 # Check and import telegram
-print("[3/5] Importing python-telegram-bot...")
+print("[3/5] Importing python-telegram-bot (v22.8+)...")
 try:
     from telegram import Update
     from telegram.ext import Application, CommandHandler, ContextTypes
     print("✅ python-telegram-bot imported successfully")
 except ImportError as e:
     print(f"❌ ERROR: python-telegram-bot not installed: {e}")
-    print("   Fix: pip install python-telegram-bot==20.7")
+    print("   Fix: pip install python-telegram-bot")
     sys.exit(1)
 
 # Create logs directory if it doesn't exist
@@ -68,7 +70,7 @@ else:
 # Setup file logging
 try:
     file_handler = logging.FileHandler('logs/telegram_bot.log')
-    file_handler.setLevel(logging.DEBUG)
+    file_handler.setLevel(logging.INFO)
     file_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
     print("✅ File logging configured (logs/telegram_bot.log)")
@@ -77,71 +79,63 @@ except Exception as e:
 
 print("[5/5] Initialization complete")
 
-class TelegramBot:
-    def __init__(self):
-        self.token = TELEGRAM_BOT_TOKEN
-        self.app = None
-        logger.info("TelegramBot class initialized")
 
-    async def start_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-        """Handle /start command"""
-        user_id = update.effective_user.id
-        user_name = update.effective_user.first_name
-        logger.info(f"[/start] User {user_id} ({user_name}) sent /start")
-        print(f"📨 /start command received from {user_name} (ID: {user_id})")
-        await update.message.reply_text("Я на связи.")
-        logger.info(f"[/start] Replied to user {user_id}")
+async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Handle /start command"""
+    user_id = update.effective_user.id
+    user_name = update.effective_user.first_name or "User"
+    logger.info(f"[/start] User {user_id} ({user_name}) sent /start")
+    print(f"📨 /start command received from {user_name} (ID: {user_id})")
+    await update.message.reply_text("Я на связи.")
+    logger.info(f"[/start] Replied to user {user_id}")
 
-    def setup_handlers(self):
-        """Setup command handlers"""
-        self.app.add_handler(CommandHandler("start", self.start_command))
-        logger.info("✅ Command handlers registered")
-        print("✅ Command handlers registered")
 
-    async def run(self):
-        """Start the bot"""
-        try:
-            self.app = Application.builder().token(self.token).build()
-            logger.info("Bot application created")
-            print("✅ Bot application created")
-
-            self.setup_handlers()
-
-            logger.info("🚀 Bot is running and listening for commands...")
-            print("\n" + "=" * 80)
-            print("🚀 BOT IS READY - WAITING FOR COMMANDS")
-            print("=" * 80)
-            print("Listening for messages in Telegram...")
-            print("Press Ctrl+C to stop\n")
-
-            await self.app.run_polling()
-        except Exception as e:
-            logger.error(f"❌ Error in bot.run(): {str(e)}", exc_info=True)
-            print(f"❌ ERROR in bot.run(): {str(e)}")
-            raise
-
-async def main():
-    """Main entry point"""
+async def main() -> None:
+    """Main entry point - Build and run the bot (python-telegram-bot v22.8+ API)"""
     try:
         print("\n" + "=" * 80)
         print("✅ ALL CHECKS PASSED - STARTING BOT")
         print("=" * 80 + "\n")
 
-        bot = TelegramBot()
-        await bot.run()
+        # Create the Application with token from .env
+        logger.info("Creating bot application...")
+        print("✅ Creating bot application...")
+        app = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
+
+        # Add command handlers
+        logger.info("Registering command handlers...")
+        print("✅ Registering command handlers...")
+        app.add_handler(CommandHandler("start", start_command))
+
+        logger.info("Bot setup complete, starting polling...")
+        print("\n" + "=" * 80)
+        print("🚀 BOT IS READY - WAITING FOR COMMANDS")
+        print("=" * 80)
+        print("Listening for messages in Telegram...")
+        print("Press Ctrl+C to stop\n")
+        logger.info("Bot polling started")
+
+        # Start the bot - this is the correct way in v22.8+
+        await app.run_polling()
+
     except KeyboardInterrupt:
         print("\n⏹️ Bot stopped by user (Ctrl+C)")
-        logger.info("Bot stopped by user")
+        logger.info("Bot stopped by user (Ctrl+C)")
         sys.exit(0)
     except Exception as e:
         print(f"❌ FATAL ERROR: {str(e)}")
         logger.error(f"FATAL ERROR: {str(e)}", exc_info=True)
         sys.exit(1)
 
+
 if __name__ == "__main__":
     import asyncio
+
     try:
         asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\n⏹️ Shutting down...")
+        sys.exit(0)
     except Exception as e:
         print(f"❌ FATAL ERROR in main: {str(e)}")
         logger.error(f"FATAL ERROR in main: {str(e)}", exc_info=True)
