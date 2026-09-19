@@ -20,14 +20,20 @@ python3 telegram_bot.py
 
 ## 📝 ШАГ ЗА ШАГОМ
 
-### 1️⃣ Убедись что зависимости установлены
+### 1️⃣ Установи зависимости (КРИТИЧНО!)
 ```bash
 pip install -r requirements.txt
 ```
 
+**Или если pip не работает правильно:**
+```bash
+pip install python-telegram-bot==20.7
+pip install python-dotenv==1.0.1
+```
+
 ### 2️⃣ Проверь что .env файл содержит токен
 ```bash
-cat .env | grep TELEGRAM_BOT_TOKEN
+type .env | findstr TELEGRAM_BOT_TOKEN
 ```
 
 Должно быть:
@@ -40,29 +46,58 @@ TELEGRAM_BOT_TOKEN=8908678178:AAFiCYAJj_4Eh-JylokTVpHuOizCE0hPitQ
 python telegram_bot.py
 ```
 
-### 4️⃣ Ожидаемый вывод
+### 4️⃣ Ожидаемый вывод в консоль (ВАЖНО!)
+Если видишь это → **БОТ РАБОТАЕТ ✅**
+
 ```
-2026-09-19 15:30:45,123 - telegram.ext.Application - INFO - Application started
-🤖 Initializing MULTIC Telegram Bot...
-✅ Bot token loaded from .env
+================================================================================
+🤖 MULTIC TELEGRAM BOT - STARTUP
+================================================================================
+
+[1/5] Loading environment variables...
+✅ dotenv loaded
+[2/5] Reading TELEGRAM_BOT_TOKEN from .env...
+✅ Token loaded (first 20 chars): 8908678178:AAFiCYAJ...
+[3/5] Importing python-telegram-bot...
+✅ python-telegram-bot imported successfully
+[4/5] Setting up logs directory...
+✅ Logs directory exists
+✅ File logging configured (logs/telegram_bot.log)
+[5/5] Initialization complete
+
+================================================================================
+✅ ALL CHECKS PASSED - STARTING BOT
+================================================================================
+
+✅ Bot application created
 ✅ Command handlers registered
-🚀 Starting bot polling...
+
+================================================================================
+🚀 BOT IS READY - WAITING FOR COMMANDS
+================================================================================
+Listening for messages in Telegram...
+Press Ctrl+C to stop
 ```
 
-### 5️⃣ Протестируй бота
+### 5️⃣ Протестируй бота в Telegram
 - Открой Telegram
 - Найди своего бота (@multic_scout_bot)
 - Отправь `/start`
-- Должен ответить: **"Я на связи."**
+- **Должен ответить:** "Я на связи."
+
+### 6️⃣ Остановить бота
+- Нажми `Ctrl+C` в PowerShell консоли
+- Должно вывести: "⏹️ Bot stopped by user (Ctrl+C)"
 
 ---
 
 ## 🔒 БЕЗОПАСНОСТЬ
 
-✅ Токен находится в `.env` файле  
+✅ Токен находится в `.env` файле (локально)  
 ✅ `.env` файл в `.gitignore` (не попадает на GitHub)  
-✅ Токен не вписан в код  
+✅ Токен НЕ вписан в код Python  
 ✅ Все переменные читаются через `os.getenv()`  
+✅ Консоль выводит все ошибки явно  
 
 ---
 
