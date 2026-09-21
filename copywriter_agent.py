@@ -111,30 +111,36 @@ class HookAnalyzer:
         """Анализирует видео и выделяет вирусные хуки"""
         logger.info(f"Анализирую видео: {video_data['video_id']}")
 
-        # Промпт для анализа видео
-        prompt = f"""Проанализируй это видео и выдели вирусные моменты (хуки):
+        # Промпт для анализа видео на основе реальных метрик
+        prompt = f"""Проанализируй это вирусное видео и выдели ключевые элементы его успеха:
 
-Название: {video_data['title']}
-Канал: {video_data['channel']}
-Просмотры: {video_data['views']:,}
-Лайки: {video_data['likes']:,}
-Комментарии: {video_data['comments']:,}
-Engagement: {video_data['engagement_ratio']}%
-Описание: {video_data['description'][:500]}
+📊 МЕТРИКИ ВИДЕО:
+- Название: {video_data['title']}
+- Канал: {video_data['channel']}
+- Просмотры: {video_data['views']:,}
+- Лайки: {video_data['likes']:,}
+- Комментарии: {video_data['comments']:,}
+- Engagement ratio: {video_data['engagement_ratio']:.1f}%
 
-Найди и выдели:
-1. Главный хук (первые 3 сек)
-2. Ключевые моменты (timestamps)
-3. Эмоциональные триггеры
-4. Форма контента (тип видео)
-5. Целевая аудитория
+📝 ОПИСАНИЕ:
+{video_data['description'][:300]}
 
-Ответь в JSON формате."""
+🎯 ЗАДАЧА: Выдели в JSON формате:
+{{
+  "main_hook": "главный крючок (1-2 предложения)",
+  "viral_triggers": ["триггер 1", "триггер 2", "триггер 3"],
+  "content_type": "тип видео (обучение/развлечение/новости/другое)",
+  "target_audience": "целевая аудитория",
+  "engagement_reason": "почему видео получило много взаимодействий",
+  "reusable_format": "можно ли использовать этот формат для других видео"
+}}
+
+Будь конкретен и аналитичен."""
 
         try:
             response = self.client.messages.create(
                 model="claude-opus-5",
-                max_tokens=500,
+                max_tokens=600,
                 messages=[
                     {"role": "user", "content": prompt}
                 ]
@@ -166,39 +172,138 @@ class TitleGenerator:
         """Генерирует 15 вариантов заголовков"""
         logger.info(f"Генерирую заголовки для {video_data['video_id']}")
 
-        prompt = f"""Сгенерируй 15 вариантов заголовков для YouTube видео.
+        prompt = f"""Сгенерируй 15 РАЗНЫХ вариантов заголовков для YouTube видео о Славяно-Арийской культуре.
 
-Видео: {video_data['title']}
-Тема: Славяно-Арийская культура
-Hooks: {hooks.get('analysis', 'Not analyzed')}
+📊 ОСНОВНЫЕ ДАННЫЕ:
+- Оригинальное название: {video_data['title']}
+- Просмотры: {video_data['views']:,}
+- Engagement: {video_data['engagement_ratio']:.1f}%
+- Анализ хуков: {hooks.get('analysis', 'Not analyzed')[:200]}
 
-Требования:
-1. Каждый заголовок 50-60 символов
-2. Содержать power words (Раскрывает, Шокирует, Тайна и т.д.)
-3. Включить числа где уместно (5 причин, 10 фактов)
-4. Различные стили: clickbait, educational, emotional
+🎯 СТРАТЕГИЯ:
+Создай заголовки для РАЗНЫХ ПЛАТФОРМ И СТИЛЕЙ:
+- 3 заголовка для КЛИКБЕЙТА (с цифрами: 5, 7, 10)
+- 3 заголовка ОБРАЗОВАТЕЛЬНЫХ (как "Узнай...")
+- 3 заголовка ЭМОЦИОНАЛЬНЫХ (как "Шокирует...")
+- 3 заголовка МИСТИЧЕСКИХ (как "Тайна...", "Древние...")
+- 3 заголовка ПРОВОКАЦИОННЫХ (как "Они скрывают...")
 
-Выдай 15 вариантов, каждый на новой строке."""
+⚠️ ПРАВИЛА:
+- Каждый заголовок МАКСИМУМ 60 символов
+- Используй power words: Раскрывает, Потрясающе, Священные, Забытые, Древние
+- Избегай "видео", "смотри", "новое"
+- Будь конкретен и интригующ
+
+📋 ФОРМАТ:
+1. Заголовок первый
+2. Заголовок второй
+... и так далее (всего 15)"""
 
         try:
             response = self.client.messages.create(
                 model="claude-opus-5",
-                max_tokens=800,
+                max_tokens=1000,
                 messages=[
                     {"role": "user", "content": prompt}
                 ]
             )
 
             titles_text = response.content[0].text
-            titles = [t.strip() for t in titles_text.split('\n') if t.strip()]
+            # Парсим заголовки (числа + точка + текст)
+            titles = []
+            for line in titles_text.split('\n'):
+                line = line.strip()
+                if line and len(line) > 3:
+                    # Удаляем номер если есть (1. 2. и т.д.)
+                    if line[0].isdigit() and line[1] == '.':
+                        line = line[3:].strip()
+                    if line and len(line) < 65:  # Проверяем длину
+                        titles.append(line)
 
-            logger.info(f"Сгенерировано {len(titles)} заголовков")
+            logger.info(f"Сгенерировано {len(titles)} заголовков (max: 15)")
             print(f"[OK] Создано {len(titles)} вариантов заголовков")
 
             return titles[:15]  # Возвращаем первые 15
         except Exception as e:
             logger.error(f"Ошибка генерации заголовков: {e}")
             print(f"[ERROR] Ошибка генерации: {e}")
+            return []
+
+
+class CommentGenerator:
+    """Генерирует социально-доказующие комментарии"""
+
+    def __init__(self):
+        self.client = client
+        logger.info("CommentGenerator инициализирован")
+
+    def generate_comments(self, video_data: dict) -> list:
+        """Генерирует 10 вариантов комментариев для социального доказательства"""
+        logger.info(f"Генерирую комментарии для {video_data['video_id']}")
+
+        prompt = f"""Сгенерируй 10 РАЗНЫХ комментариев для YouTube видео о Славяно-Арийской культуре.
+
+📊 ВИДЕО:
+- Название: {video_data['title']}
+- Тема: Славяно-Арийская культура
+- Просмотры: {video_data['views']:,}
+
+🎯 ТИПЫ КОММЕНТАРИЕВ (по 2 шт каждого):
+
+1️⃣ ВОПРОС ДЛЯ ОБСУЖДЕНИЯ (2 варианта):
+   Естественный вопрос, вызывающий ответ и дискуссию
+
+2️⃣ БЛАГОДАРНОСТЬ + ВОПРОС (2 варианта):
+   Спасибо за видео + конкретный вопрос по теме
+
+3️⃣ ФАКТ + ИСТОЧНИК (2 варианта):
+   Интересный факт или ссылка на источник информации
+
+4️⃣ ЛИЧНЫЙ ОПЫТ (2 варианта):
+   "Я сам видел...", "У нас на Урале...", личная история
+
+5️⃣ ЭМОЦИОНАЛЬНЫЙ (2 варианта):
+   "Потрясающе!", "Наконец то!", "Вот это да!"
+
+⚠️ ПРАВИЛА:
+- Каждый комментарий 30-150 символов
+- Выглядеть естественно (не как bot)
+- На русском языке
+- Вызывать дальнейшее обсуждение
+- Включить 1-2 хештега где уместно
+
+📋 ФОРМАТ:
+1. Комментарий первый
+2. Комментарий второй
+... всего 10"""
+
+        try:
+            response = self.client.messages.create(
+                model="claude-opus-5",
+                max_tokens=700,
+                messages=[
+                    {"role": "user", "content": prompt}
+                ]
+            )
+
+            comments_text = response.content[0].text
+            comments = []
+            for line in comments_text.split('\n'):
+                line = line.strip()
+                if line and len(line) > 10 and len(line) < 160:
+                    # Удаляем номер если есть
+                    if line[0].isdigit() and line[1] == '.':
+                        line = line[3:].strip()
+                    if line:
+                        comments.append(line)
+
+            logger.info(f"Сгенерировано {len(comments)} комментариев")
+            print(f"[OK] Создано {len(comments)} комментариев для социального доказательства")
+
+            return comments[:10]
+        except Exception as e:
+            logger.error(f"Ошибка генерации комментариев: {e}")
+            print(f"[ERROR] Ошибка комментариев: {e}")
             return []
 
 
@@ -225,40 +330,74 @@ class DescriptionGenerator:
         descriptions = {}
 
         for platform, config in self.platforms.items():
-            prompt = f"""Сгенерируй 5 вариантов описания для {platform.upper()}.
+            prompt = f"""Сгенерируй 5 РАЗНЫХ вариантов описания для {platform.upper()}.
 
-Видео: {video_data['title']}
-Оригинальное описание: {video_data['description'][:300]}
+📊 ВИДЕО:
+- Название: {video_data['title']}
+- Просмотры: {video_data['views']:,}
+- Оригинальное описание: {video_data['description'][:250]}
 
-Параметры:
-- Максимум {config['max_chars']} символов
-- Стиль: {config['style']}
+⚙️ ПАРАМЕТРЫ ПЛАТФОРМЫ:
 - Платформа: {platform}
+- Максимум символов: {config['max_chars']}
+- Стиль: {config['style']}
+- Тема: Славяно-Арийская культура
 
-Требования:
-1. Привлекательное начало
-2. Информация о видео
-3. Call-to-action (subscribe/follow)
-4. Релевантные хештеги
+🎯 ЗАДАЧА:
+Создай 5 РАЗНЫХ описаний с разными подходами:
 
-Выдай 5 вариантов описаний."""
+1️⃣ Вариант ОБРАЗОВАТЕЛЬНЫЙ: "Узнай больше о...", факты, информация
+2️⃣ Вариант ЭМОЦИОНАЛЬНЫЙ: "Погрузись в...", ощущения, атмосфера
+3️⃣ Вариант ПРОВОКАЦИОННЫЙ: "Они скрывают...", интрига, тайна
+4️⃣ Вариант ПРАКТИЧЕСКИЙ: "Смотри как...", применение, пример
+5️⃣ Вариант СОЦИАЛЬНЫЙ: "Присоединись...", комьюнити, общность
+
+⚠️ ОБЯЗАТЕЛЬНО ДЛЯ КАЖДОГО:
+- Привлекательное начало (первая строка - хук)
+- Краткое описание контента
+- CTA (Call-To-Action): subscribe/follow/like/comment
+- Релевантные хештеги для {platform}
+- НЕ превышать {config['max_chars']} символов
+
+📋 ФОРМАТ:
+=== ВАРИАНТ 1: ОБРАЗОВАТЕЛЬНЫЙ ===
+[описание]
+
+=== ВАРИАНТ 2: ЭМОЦИОНАЛЬНЫЙ ===
+[описание]
+... и так далее"""
 
             try:
                 response = self.client.messages.create(
                     model="claude-opus-5",
-                    max_tokens=500,
+                    max_tokens=800,
                     messages=[
                         {"role": "user", "content": prompt}
                     ]
                 )
 
                 desc_text = response.content[0].text
-                descriptions[platform] = [d.strip() for d in desc_text.split('\n\n') if d.strip()]
+                # Парсим варианты по ВАРИАНТ X
+                variants = []
+                current_variant = ""
+                for line in desc_text.split('\n'):
+                    if 'ВАРИАНТ' in line.upper():
+                        if current_variant.strip():
+                            variants.append(current_variant.strip())
+                        current_variant = ""
+                    else:
+                        current_variant += line + "\n"
 
-                logger.info(f"Описания для {platform} созданы")
-                print(f"[OK] Описания для {platform} созданы")
+                if current_variant.strip():
+                    variants.append(current_variant.strip())
+
+                descriptions[platform] = [v.strip() for v in variants if v.strip()][:5]
+
+                logger.info(f"Описания для {platform} созданы ({len(descriptions[platform])} вариантов)")
+                print(f"[OK] Описания для {platform} готовы ({len(descriptions[platform])} вариантов)")
             except Exception as e:
                 logger.error(f"Ошибка для {platform}: {e}")
+                print(f"[ERROR] {platform}: {e}")
                 descriptions[platform] = []
 
         return descriptions
@@ -310,6 +449,7 @@ def main():
         hook_analyzer = HookAnalyzer()
         title_generator = TitleGenerator()
         desc_generator = DescriptionGenerator()
+        comment_generator = CommentGenerator()
 
         # Обрабатываем каждое видео
         for video in videos:
@@ -320,31 +460,41 @@ def main():
             # 1. Анализируем хуки
             hooks = hook_analyzer.analyze_video(video)
             if not hooks:
+                print("[SKIP] Не удалось проанализировать видео")
                 continue
 
-            # 2. Генерируем заголовки
+            # 2. Генерируем заголовки (15 вариантов)
             titles = title_generator.generate_titles(video, hooks)
             if not titles:
+                print("[SKIP] Не удалось сгенерировать заголовки")
                 continue
 
-            # 3. Генерируем описания
+            # 3. Генерируем описания (6 платформ × 5 вариантов)
             descriptions = desc_generator.generate_descriptions(video)
 
-            # 4. Сохраняем результаты в БД
+            # 4. Генерируем комментарии (10 вариантов социального доказательства)
+            comments = comment_generator.generate_comments(video)
+
+            # 5. Сохраняем результаты в БД
             logger.info(f"Сохраняю результаты для {video['video_id']}")
 
-            # Обновляем статус видео
+            total_variants = len(titles) + sum(len(d) for d in descriptions.values()) + len(comments)
+            print(f"\n📊 СТАТИСТИКА ГЕНЕРАЦИИ:")
+            print(f"   - Заголовки: {len(titles)} вариантов")
+            print(f"   - Описания: {sum(len(d) for d in descriptions.values())} вариантов (6 платформ)")
+            print(f"   - Комментарии: {len(comments)} вариантов")
+            print(f"   - ВСЕГО: {total_variants} вариантов контента\n")
+
+            # Обновляем статус видео в БД
             conn = sqlite3.connect('scout_agent.db')
             c = conn.cursor()
-            c.execute("UPDATE videos SET status = 'analyzing' WHERE video_id = ?",
+            c.execute("UPDATE videos SET status = 'content_ready' WHERE video_id = ?",
                      (video['video_id'],))
             conn.commit()
             conn.close()
 
-            print(f"\n[OK] Видео '{video['title'][:40]}' обработано")
-            print(f"     - Заголовки: {len(titles)} вариантов")
-            print(f"     - Описания: {len(descriptions)} платформ")
-            print(f"     - Статус: готово к публикации\n")
+            print(f"[OK] Видео '{video['title'][:40]}' полностью обработано")
+            print(f"     - Статус: готово к A/B тестированию и публикации\n")
 
         print("\n" + "=" * 80)
         print("[OK] Copywriter Agent завершил работу")

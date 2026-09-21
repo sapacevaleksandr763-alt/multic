@@ -133,20 +133,30 @@ class YouTubePublisher:
         logger.info(f"Публикую видео на YouTube: {title[:50]}")
         print(f"[INFO] Загрузка видео на YouTube...")
 
-        # Здесь будет интеграция с YouTube API
-        # Для демонстрации возвращаем mock результат
+        if not self.api_key:
+            logger.warning("YouTube API Key не установлен")
+            print("[WARNING] YouTube API токен не найден")
+            result = {
+                "platform": "youtube",
+                "status": "skipped",
+                "reason": "API key not configured"
+            }
+            return result
+
+        # TODO: Реальная интеграция YouTube API v3
+        # Требуется: google-auth-oauthlib, google-auth-httplib2, google-api-python-client
 
         result = {
             "platform": "youtube",
-            "video_id": "mock_yt_id",
+            "video_id": f"yt_{int(datetime.now().timestamp())}",
             "title": title,
-            "url": "https://youtube.com/watch?v=mock_yt_id",
+            "url": "https://youtube.com/watch?v=pending",
             "published_at": datetime.now().isoformat(),
-            "status": "published"
+            "status": "published_mock"
         }
 
-        logger.info(f"Видео опубликовано на YouTube: {result['url']}")
-        print(f"[OK] Видео опубликовано: {result['url']}")
+        logger.info(f"YouTube: видео готово к публикации (требуется OAuth)")
+        print(f"[TODO] YouTube integration pending OAuth setup")
 
         return result
 
