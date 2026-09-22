@@ -17,6 +17,7 @@ from promotion_agent.publishers_youtube import YouTubePublisher
 from promotion_agent.publishers_telegram import TelegramPublisher
 from promotion_agent.types import PendingReview, PublishedVideo, VideoStatus, SocialPost
 from promotion_agent.config import PromotionConfig
+from promotion_agent.agent_reach_monitor import AgentReachMonitor
 
 logger = logging.getLogger(__name__)
 
@@ -44,11 +45,14 @@ class PromotionWorkflow:
         self.post_gen = PostGenerator(config.claude_api_key)
         self.subtitle_gen = SubtitleGenerator()
 
+        # Initialize Agent-Reach monitor for trend detection & competitor analysis
+        self.reach_monitor = AgentReachMonitor(config)
+
         # Initialize publishers
         self.publishers = PublisherRegistry()
         self._setup_publishers()
 
-        logger.info("PromotionWorkflow initialized")
+        logger.info("PromotionWorkflow initialized with Agent-Reach monitoring")
 
     def _setup_publishers(self):
         """Setup all platform publishers"""
