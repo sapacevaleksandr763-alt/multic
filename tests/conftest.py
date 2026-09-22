@@ -173,7 +173,7 @@ def pytest_configure(config):
 def pytest_runtest_logreport(report):
     """Логирует результаты тестов"""
     if report.when == "call":
-        status = "✅ PASS" if report.outcome == "passed" else "❌ FAIL"
+        status = "[PASS]" if report.outcome == "passed" else "[FAIL]"
         print(f"\n{status}: {report.nodeid}")
 
 
